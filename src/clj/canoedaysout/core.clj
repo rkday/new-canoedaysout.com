@@ -35,6 +35,8 @@
 
 (defroutes test-app
   app
+  ;; Refer to the main site for images so I don't need to store them
+  ;; all locally
   (GET "/static/images/*" {:keys [uri] :as request} (redirect (str "http://new.canoedaysout.com" uri)))
   (route/resources "/static/"))
 

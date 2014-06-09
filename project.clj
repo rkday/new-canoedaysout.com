@@ -9,21 +9,20 @@
                  [compojure "1.1.6"]
                  [de.ubercode.clostache/clostache "1.3.1"]
                  [clj-refresh-cache "0.1.0-SNAPSHOT"]
-  ;;               [yesql "0.4.0"]
-    ;;             [org.clojure/java.jdbc "0.3.3"]
-     ;;            [mysql/mysql-connector-java "5.1.25"]
                  [congomongo "0.4.1"]]
 
   :plugins [[lein-cljsbuild "1.0.2"]
             [lein-ring "0.8.10"]]
   :ring {:handler canoedaysout.core/app
-  	 :war-exclusions [#"clojurescript.*"
-#"closure-compiler.*"
-#"google-closure-lib.*"
-#"guava.*"
-#"rhino.*"
-#"jetty.*"
-]}
+  	 :war-exclusions [;; Exclude cljs-related files to keep the
+                          ;; WAR size down
+                          #"clojurescript.*"
+                          #"closure-compiler.*"
+                          #"google-closure-lib.*"
+                          #"guava.*"
+                          #"rhino.*"
+                          #"jetty.*"
+                          ]}
 
   :source-paths ["src/clj"]
   :profiles {:uberjar {:aot :all}}
